@@ -98,7 +98,7 @@ def test_read():
 @with_setup(setup)
 def test_read_no_structure():
     input_file = 'test.tsv'
-    with open(input_file, 'wt') as f:
+    with open(input_file, 'w') as f:
         f.write(test_input_data)
     data = reader.read(input_file, form='raw')
     os.remove(input_file)
