@@ -98,7 +98,7 @@ def test_read():
 @with_setup(setup)
 def test_read_no_structure():
     input_file = 'test.tsv'
-    with open(input_file, 'w') as f:
+    with open(input_file, 'wt') as f:
         f.write(test_input_data)
     data = reader.read(input_file, form='raw')
     os.remove(input_file)
@@ -129,7 +129,7 @@ def test_read_raw():
 @with_setup(setup)
 def test_read_raw_compressed():
     input_file = 'test.tsv.gz'
-    with gzip.open(input_file, 'wt') as g:
+    with gzip.open(input_file, 'w') as g:
         g.write(test_input_data)
     raw = reader.read_raw(input_file)
     os.remove(input_file)
