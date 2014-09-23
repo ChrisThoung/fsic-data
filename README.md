@@ -17,6 +17,6 @@ modelling using [FSIC](https://github.com/cthoung/fsic).
 ### Required
 
 * [pandas](http://pandas.pydata.org/):
-  Version 0.13.1 or higher
+  Version 0.14.1 or higher
     * See the `pandas` documentation for further dependencies
-      (FSICdata also uses [NumPy](http://www.numpy.org/) directly)
+      (`FSICdata` also uses [NumPy](http://www.numpy.org/) directly)
