@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 
-def read(path, clean=True, form='structured'):
+def read(path, clean=True, format='long'):
     """Return the contents of `path` as a pandas DataFrame object.
 
     Parameters
@@ -20,7 +20,7 @@ def read(path, clean=True, form='structured'):
         Path to input data file
     clean : boolean
         If `True`, apply further cleaning procedures to the raw data
-    form : string
+    format : string
         Depending on the value, reshape the contents of the DataFrame before
         returning
 
@@ -35,13 +35,13 @@ def read(path, clean=True, form='structured'):
     # Clean, if required
     if clean:
         data = clean_data(data)
-    # Restructure, if required
-    if form == 'structured':
-        data = structure(data)
-    elif form == 'raw':
+    # Reshape, depending on the value of `format`
+    if format == 'long':
+        data = format_long(data)
+    elif format == 'raw':
         pass
     else:
-        raise ValueError('Unrecognised `form` argument: %s' % form)
+        raise ValueError('Unrecognised `format` argument: %s' % format)
     # Return
     return data
 
@@ -135,18 +135,18 @@ def clean_field(field):
     return field
 
 
-def structure(data):
-    """Return a structured-form version of `data`.
+def format_long(data):
+    """Return a long-format version of `data`.
 
     Parameters
     ==========
     data : pandas DataFrame
-        Raw form of input data
+        Raw input data
 
     Return
     ======
     data : pandas DataFrame
-        Melted (structured) version of `data`
+        Long-format ('molten') version of `data`
 
     """
     # Extract column names and locate rightmost identifier column

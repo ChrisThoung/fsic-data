@@ -54,8 +54,8 @@ B1G,SA,EU27\t19\t20\t21\t22\t23\t24
          '2013Q1': [6.0, 12.0, np.NaN, 24.0], })
     expected_clean = expected_clean[column_order]
 
-    global expected_structured
-    expected_structured = DataFrame(
+    global expected_long_format
+    expected_long_format = DataFrame(
         {'indic_na': ['B1GM', 'B1GM', 'B1G', 'B1G', 'B1GM',
                       'B1GM', 'B1G', 'B1G', 'B1GM', 'B1GM',
                       'B1G', 'B1G', 'B1GM', 'B1GM', 'B1G',
@@ -81,7 +81,7 @@ B1G,SA,EU27\t19\t20\t21\t22\t23\t24
                    np.NaN, 21.0, np.NaN, 10.0, np.NaN,
                    22.0, 5.0, 11.0, np.NaN, 23.0,
                    6.0, 12.0, np.NaN, 24.0]})
-    expected_structured = expected_structured[[
+    expected_long_format = expected_long_format[[
         'indic_na', 's_adj', 'geo', 'time', 'value']]
 
 
@@ -92,26 +92,26 @@ def test_read():
         f.write(test_input_data)
     data = reader.read(input_file)
     os.remove(input_file)
-    assert_frame_equal(data, expected_structured)
+    assert_frame_equal(data, expected_long_format)
 
 
 @with_setup(setup)
-def test_read_no_structure():
+def test_read_raw_format():
     input_file = 'test.tsv'
     with open(input_file, 'wt') as f:
         f.write(test_input_data)
-    data = reader.read(input_file, form='raw')
+    data = reader.read(input_file, format='raw')
     os.remove(input_file)
     assert_frame_equal(data, expected_clean)
 
 
 @with_setup(setup)
 @raises(ValueError)
-def test_read_bad_structure():
+def test_read_bad_format_argument():
     input_file = 'test.tsv'
     with open(input_file, 'wt') as f:
         f.write(test_input_data)
-    data = reader.read(input_file, form='')
+    data = reader.read(input_file, format='')
     os.remove(input_file)
     assert_frame_equal(data, expected_clean)
 
@@ -156,25 +156,24 @@ def test_clean_field():
 
 
 @with_setup(setup)
-def test_structure():
-    print(expected_clean)
-    result = reader.structure(expected_clean)
+def test_format_long():
+    result = reader.format_long(expected_clean)
     assert_frame_equal(
         result,
-        expected_structured)
+        expected_long_format)
 
 
 @with_setup(setup)
 @raises(ValueError)
-def test_structure_bad_column():
+def test_format_long_bad_column():
     expected_clean_bad_column = expected_clean.copy()
     column_names = list(expected_clean_bad_column.columns)
     column_names[0] = column_names[0] + '\\dummy'
     expected_clean_bad_column.columns = column_names
-    result = reader.structure(expected_clean_bad_column)
+    result = reader.format_long(expected_clean_bad_column)
     assert_frame_equal(
         result,
-        expected_structured)
+        expected_long_format)
 
 
 if __name__ == '__main__':
