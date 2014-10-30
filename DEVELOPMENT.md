@@ -8,3 +8,10 @@ The development workflow for this project is as follows:
   for merging back into `master`
     * Development branches should branch from this one
 	* Completed features should be merged back into this branch
+
+## Branch naming conventions
+
+Development branches should have name prefixes as follows:
+
+* Feature branches: `feature/` e.g. `feature/ons`
+* Fixes: `fix/` e.g. `fix/eurostat-clean-field`
