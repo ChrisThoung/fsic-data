@@ -43,6 +43,8 @@ setup(
         'FSICdata',
         'FSICdata.eurostat',
         'FSICdata.eurostat.tests',
+        'FSICdata.ons',
+        'FSICdata.ons.tests',
         ],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
