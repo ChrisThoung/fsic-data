@@ -1,6 +1,6 @@
 # FSIC data
 
-[![Build Status](https://travis-ci.org/cthoung/fsic-data.svg?branch=master)](https://travis-ci.org/cthoung/fsic-data)
+[![Build Status](https://travis-ci.org/ChrisThoung/fsic-data.svg?branch=master)](https://travis-ci.org/ChrisThoung/fsic-data)
 
 `FSICdata` is a Python package to provide tools to convert raw economic data to
 common data formats. It provides data-processing tools to support macroeconomic
