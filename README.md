@@ -1,4 +1,4 @@
-# FSIC data
+# FSICdata
 
 [![Build Status](https://travis-ci.org/ChrisThoung/fsic-data.svg?branch=master)](https://travis-ci.org/ChrisThoung/fsic-data)
 
