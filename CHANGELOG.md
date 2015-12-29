@@ -9,6 +9,8 @@ FSICdata follows the conventions of
 
 ### Added
 
+* Functions to process ONS data in CSV format
+
 ### Changed
 
 ### Deprecated
