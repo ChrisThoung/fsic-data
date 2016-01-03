@@ -9,7 +9,9 @@ FSICdata follows the conventions of
 
 ### Added
 
-* Functions to process ONS data in CSV format
+* Functions to process ONS data in CSV format:
+    * `get_csv()` to download CSV data
+    * `read_csv()` to read CSV data to `pandas` `DataFrame` objects
 
 ### Changed
 

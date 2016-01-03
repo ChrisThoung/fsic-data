@@ -6,8 +6,59 @@ Python module to read ONS datafiles.
 """
 
 
+import urllib.request
+
 from pandas import DataFrame
 import pandas as pd
+
+
+def get_csv(url_or_code, save_to=None, decode_to='latin-1'):
+    """Download an ONS dataset in CSV format.
+
+    Parameters
+    ----------
+    url_or_code : string
+        URL (containing a forward slash) or ONS dataset code to download
+        e.g. 'http://www.ons.gov.uk/ons/datasets-and-tables/downloads/csv.csv?dataset=qna'
+             'ukea'
+    save_to : `None` or string
+        If `None`, just return the downloaded data
+        If a string, save the data to the path in that string
+    decode_to : `None` or string
+        If `None`, leave the downloaded data as a bytes object
+        If a string, decode the bytes using the specified encoding
+
+    Returns
+    -------
+    If `save_to` is `None`: the downloaded data (decoded, as required)
+
+    Examples
+    --------
+    >>> get_csv('qna', save_to='path/to/qna.csv')
+
+    >>> qna_data_as_string = get_csv('http://www.ons.gov.uk/ons/datasets-and-tables/downloads/csv.csv?dataset=ukea',
+                                     save_to=None)
+
+    """
+    # Form URL
+    url_stub = 'http://www.ons.gov.uk/ons/datasets-and-tables/downloads/csv.csv?dataset='
+    if '/' not in url_or_code:
+        url_or_code = url_stub + url_or_code
+    # Download data
+    with urllib.request.urlopen(url_or_code) as f:
+        data = f.read()
+    # Decode as required
+    if decode_to is not None:
+        try:
+            data = data.decode(decode_to)
+        except:
+            pass
+    # Return or save
+    if save_to is None:
+        return data
+    else:
+        with open(save_to, 'w') as f:
+            print(data, file=f)
 
 
 def read_csv(filepath, *args, index_col=0, return_meta=False, stride=5, **kwargs):
