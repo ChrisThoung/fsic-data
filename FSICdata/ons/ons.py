@@ -58,7 +58,7 @@ def get_csv(url_or_code, save_to=None, decode_to='latin-1'):
         return data
     else:
         with open(save_to, 'w') as f:
-            print(data, file=f)
+            print(data, file=f, end='')
 
 
 def read_csv(filepath, *args, index_col=0, return_meta=False, stride=5, **kwargs):
@@ -125,6 +125,8 @@ def read_meta(raw_text, stride=5):
     meta_dict = {}
     for pos in range(0, len(lines), stride):
         heading = lines[pos]
+        if len(heading.strip()) == 0:
+            continue
         code, desc = heading.split(',', maxsplit=1)
         entry = {'description': desc[1:-1]}
         for item in lines[pos + 1:pos + stride]:
