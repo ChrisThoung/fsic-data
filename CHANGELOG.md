@@ -1,8 +1,8 @@
 # Change log
 
-[Change log](http://keepachangelog.com/) for FSICdata.
+[Change log](http://keepachangelog.com/) for FSICData.
 
-FSICdata follows the conventions of
+FSICData follows the conventions of
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html) (version 2.0.0).
 
 ## 0.2.0 - 2015-MM-DD
@@ -14,6 +14,8 @@ FSICdata follows the conventions of
     * `read_csv()` to read CSV data to `pandas` `DataFrame` objects
 
 ### Changed
+
+* Rename module `FSICdata` to `FSICData` (change to uppercase 'D')
 
 ### Deprecated
 

@@ -53,5 +53,8 @@ docs/_build/
 # PyBuilder
 target/
 
+# Emacs droppings
+.#*
+
 # Setup files
-FSICdata/version.py
+FSICData/version.py

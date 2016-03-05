@@ -11,7 +11,7 @@ import pandas as pd
 
 from nose.tools import with_setup, raises
 
-from FSICdata.eurostat import tsv as reader
+from FSICData.eurostat import tsv as reader
 
 
 def setup():

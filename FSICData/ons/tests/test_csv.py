@@ -10,7 +10,7 @@ import pandas as pd
 
 from nose.tools import with_setup, raises
 
-from FSICdata.ons import csv as reader
+from FSICData.ons import csv as reader
 
 
 def setup():

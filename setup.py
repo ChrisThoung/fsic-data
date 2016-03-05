@@ -20,7 +20,7 @@ if not for_release:
     VERSION += '.dev'
 
 # Write package version.py
-with open(os.path.join('FSICdata', 'version.py'), 'wt') as f:
+with open(os.path.join('FSICData', 'version.py'), 'wt') as f:
     version_to_write = """\
 MAJOR = '%d'
 MINOR = '%d'
@@ -33,18 +33,18 @@ VERSION = '%d.%d.%d"""
 
 # Call setup()
 setup(
-    name='FSICdata',
+    name='FSICData',
     version=VERSION,
     license='BSD',
     author='Chris Thoung',
     author_email='chris.thoung@gmail.com',
     url='https://github.com/cthoung/fsic-data',
     packages=[
-        'FSICdata',
-        'FSICdata.eurostat',
-        'FSICdata.eurostat.tests',
-        'FSICdata.ons',
-        'FSICdata.ons.tests',
+        'FSICData',
+        'FSICData.eurostat',
+        'FSICData.eurostat.tests',
+        'FSICData.ons',
+        'FSICData.ons.tests',
         ],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
